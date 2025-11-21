@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — URL Checker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <script type="module">import { onAuthStateChangedRedirect, initLogout } from './js/auth.js'; onAuthStateChangedRedirect(true, '/login.html');</script>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/dashboard.html">URLChecker</a>
+      <div class="nav-actions">
+        <button id="logout-btn" class="btn btn-outline">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container main-dashboard">
+    <div class="center-card">
+      <h2>URL Safety Checker</h2>
+      <p class="muted">Paste a link below to analyze its safety.</p>
+
+      <div class="input-row">
+        <input id="url-input" type="url" placeholder="https://example.com" />
+        <button id="check-btn" class="btn btn-primary">Check URL</button>
+      </div>
+
+      <div id="result" class="result-card hidden">
+        <div id="result-status" class="result-status"></div>
+        <div id="result-details" class="result-details"></div>
+      </div>
+
+      <div class="actions-row">
+        <a id="telegram-bot" class="btn btn-outline" href="https://t.me/YourTelegramBot" target="_blank" rel="noreferrer">Open Telegram Bot</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { initDashboard } from './js/main.js';
+    import { initLogout } from './js/auth.js';
+    initDashboard();
+    initLogout('#logout-btn');
+  </script>
+</body>
+</html>
